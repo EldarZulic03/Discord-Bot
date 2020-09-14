@@ -11,20 +11,23 @@ const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith(
 for(const file of commandFiles){
     const command = require(`./commands/${file}`);
     
-    client.commands.set(command.name, commad)
+    client.commands.set(command.name, command)
 }
 
 client.once('ready', () => {
     console.log('Re-Mined is online!')
 });
 
-
-
-
-
-
-
-
+client.on('message', message => {
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
+ 
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const commands = args.shift().toLowerCase();
+    
+    if (command === 'ping'){
+        client.commands.get('ping').execute(message, args);
+    }
+});
 
 
 
