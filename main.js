@@ -5,6 +5,15 @@ const prefix = '.';
 //prefix required before each message
 const fs = require('fs');
 
+client.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
+for(const file of commandFiles){
+    const command = require(`./commands/${file}`);
+    
+    client.commands.set(command.name, commad)
+}
+
 client.once('ready', () => {
     console.log('Re-Mined is online!')
 });
