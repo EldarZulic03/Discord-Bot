@@ -16,7 +16,7 @@ for(const file of commandFiles){
 
 client.once('ready', () => {
     console.log('Re-Mined is online!')
-});
+});        
 
 client.on('message', message => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
@@ -24,10 +24,7 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const commands = args.shift().toLowerCase();
     
-    if (commands === 'bleeding'){
-        client.commands.get('bleeding').execute(message, args);
-    }
-    else if(commands === 'hello'){
+    if(commands === 'hello'){
         client.commands.get('hello').execute(message, args);
     }
 });
