@@ -24,8 +24,8 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const commands = args.shift().toLowerCase();
     
-    if (commands === 'ping'){
-        client.commands.get('ping').execute(message, args);
+    if (commands === 'bleeding'){
+        client.commands.get('bleeding').execute(message, args);
     }
     else if(commands === 'hello'){
         client.commands.get('hello').execute(message, args);
